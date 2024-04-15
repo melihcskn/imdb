@@ -5,9 +5,9 @@ import { useUserContext } from '@/contexts/UserContext'
 import { userOptions } from '@/constants'
 
 export default function SignInButton() {
-  const { state } = useUserContext()
-  const isSigned = state.isSigned
-  const user = state.user
+  const { state: userState } = useUserContext()
+  const isSigned = userState.isSigned
+  const user = userState.user
 
   const navigate = useNavigate()
 

@@ -13,15 +13,15 @@ export default function SearchBarListItem() {
   const actors = searchState.actors
   const isLoading = searchState.isLoading
   const isSearchInputValid = searchState.isSearchInputValid
-  let condition = false
+  let isDataExist = true
   const url = noPictureLogo
 
   /*
-  Check if movie and actor data are valid and also there is a valid input, then
-  set condition is true so render list items
+  Set condition to false if there is no actor and movie data found
+  while user has entered a search input
   */
   if (movies.length === 0 && actors.length === 0 && isSearchInputValid) {
-    condition = true
+    isDataExist = false
   }
 
   return (
@@ -40,7 +40,7 @@ export default function SearchBarListItem() {
                   </Spinner>
                 </li>
               </Then>
-              <ElseIf condition={condition == true}>
+              <ElseIf condition={isDataExist == false}>
                 <li key={1}>
                   <button className={styles.dd__menu__button}>
                     {'No match'}
