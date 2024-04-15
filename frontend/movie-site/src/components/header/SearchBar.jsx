@@ -21,7 +21,7 @@ export default function SearchBar() {
     //Check if there is a valid input
     if (isSearchInputValid) {
       //Get data according to input and selected filter
-      getSearchData(searchDispatch, searchInput, searchState.searchBarFilter.id)
+      getSearchData(searchDispatch, searchInput, filter.id)
     } else {
       searchDispatch({
         type: 'UPDATE_SEARCH_DATA',
