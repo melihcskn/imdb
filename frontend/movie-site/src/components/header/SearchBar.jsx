@@ -17,10 +17,6 @@ export default function SearchBar() {
   const filter = searchState.searchBarFilter
   const isListOpen = searchState.isListOpen
 
-  const test = () => {
-    console.log(searchState)
-  }
-
   useEffect(() => {
     //Check if there is a valid input
     if (isSearchInputValid) {
@@ -45,7 +41,6 @@ export default function SearchBar() {
         //If list is open then render list items
         isListOpen && <SearchBarListItem />
       }
-      <button onClick={test}>Test</button>
     </div>
   )
 }
