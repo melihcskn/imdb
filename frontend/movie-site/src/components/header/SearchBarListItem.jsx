@@ -3,7 +3,6 @@ import 'bootstrap/dist/css/bootstrap.css'
 import Spinner from 'react-bootstrap/Spinner'
 import { If, Then, ElseIf, Else } from 'react-if-elseif-else-render'
 import { noPictureLogo } from '@/constants'
-import { Link } from 'react-router-dom'
 import styles from './header.module.css'
 import { useSearchContext } from '@/contexts/SearchContext'
 
@@ -51,9 +50,8 @@ export default function SearchBarListItem() {
                 {movies.map((item, index) => {
                   return (
                     <li key={index}>
-                      <Link
-                        to={`/movie/${item.movieId}`}
-                        value="filters"
+                      <a
+                        href={`/title/${item.movieId}`}
                         className={`${styles.dd__menu__button} ${styles.header__searchbar__list__item}`}
                       >
                         <img src={item.moviePoster ? item.moviePoster : url} />
@@ -70,7 +68,7 @@ export default function SearchBarListItem() {
                             })}
                           </p>
                         </div>
-                      </Link>
+                      </a>
                     </li>
                   )
                 })}
@@ -78,9 +76,8 @@ export default function SearchBarListItem() {
                   {actors.map((item, index) => {
                     return (
                       <li key={index}>
-                        <Link
-                          to={`/actor/${item.actorId}`}
-                          value="filters"
+                        <a
+                          href={`/actor/${item.actorId}`}
                           className={`${styles.dd__menu__button} ${styles.header__searchbar__list__item}`}
                         >
                           <img
@@ -102,7 +99,7 @@ export default function SearchBarListItem() {
                               })}
                             </p>
                           </div>
-                        </Link>
+                        </a>
                       </li>
                     )
                   })}

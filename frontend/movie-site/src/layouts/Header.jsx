@@ -5,12 +5,16 @@ import { SearchContextProvider } from '@/contexts/SearchContext'
 export default function Header() {
   return (
     <div className={styles.header}>
-      <Logo />
-      <MenuToggle />
-      <SearchContextProvider>
-        <SearchBar />
-      </SearchContextProvider>
-      <SignInButton />
+      <div
+        className={` ${styles.header__container}  ${styles['header__container--left']} ${styles['header__container--right']}`}
+      >
+        <Logo />
+        <MenuToggle />
+        <SearchContextProvider>
+          <SearchBar />
+        </SearchContextProvider>
+        <SignInButton />
+      </div>
     </div>
   )
 }

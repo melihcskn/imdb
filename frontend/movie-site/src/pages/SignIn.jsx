@@ -86,9 +86,11 @@ export default function SignIn() {
         })
         dispatch({ type: 'SIGN_IN', payload: response.data.token })
       } catch (error) {
-        alert(error.response.data.message)
-        console.log(error)
+        alert(error.response.data.message.join('\n'))
       }
+    } else {
+      isValid.current = false
+      setRender(!render)
     }
   }
 

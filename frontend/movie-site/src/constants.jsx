@@ -1,12 +1,23 @@
-const URLs = [
-  'http://localhost:8080/api/movies/getMovieStartingWith?searchParam=',
-  'http://localhost:8080/api/movies/getMovieContains?searchParam=',
-  'http://localhost:8080/api/actors/getByNameStartingWith?searchParam=',
-  'http://localhost:8080/api/actors/getByNameContains?searchParam=',
-]
+const ApiURLs = {
+  getMovieByNameStartingWith:
+    'http://localhost:8080/api/movies/getMovieStartingWith?searchParam=',
+  getMovieByNameContains:
+    'http://localhost:8080/api/movies/getMovieContains?searchParam=',
+  getMovieById: 'http://localhost:8080/api/movies/',
+  getActorByNameStartingWith:
+    'http://localhost:8080/api/actors/getByNameStartingWith?searchParam=',
+  getActorByNameContains:
+    'http://localhost:8080/api/actors/getByNameContains?searchParam=',
+  getActorById: 'http://localhost:8080/api/actors/',
+}
 
 const siteLogo = '/images/IMDB_Logo.png'
 const noPictureLogo = '/images/no_picture_available.png'
+
+const homePosters = [
+  { img: '/images/avengers.jpg', alt: 'avengers_poster_1' },
+  { img: '/images/avengers2.jpg', alt: 'avengers_poster_2' },
+]
 
 const filterOptions = [
   { name: 'All', id: 0 },
@@ -21,4 +32,11 @@ const userOptions = [
   { name: 'LogOut', id: 2, Link: '/SignOut' },
 ]
 
-export { URLs, siteLogo, filterOptions, noPictureLogo, userOptions }
+export {
+  ApiURLs,
+  siteLogo,
+  filterOptions,
+  noPictureLogo,
+  userOptions,
+  homePosters,
+}

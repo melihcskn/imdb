@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { URLs } from '@/constants'
+import { ApiURLs } from '@/constants'
 
 async function getSearchData(dispatch, searchQuery, searchFilter) {
   try {
@@ -29,8 +29,8 @@ async function getSearchData(dispatch, searchQuery, searchFilter) {
 }
 
 const getActorData = async function (input) {
-  const default_actor_url = URLs[2].concat(input)
-  const alternative_actor_url = URLs[3].concat(input)
+  const default_actor_url = ApiURLs.getActorByNameStartingWith.concat(input)
+  const alternative_actor_url = ApiURLs.getActorByNameContains.concat(input)
   try {
     var actor_default_response = await axios.get(default_actor_url)
     var resp = actor_default_response.data
@@ -51,8 +51,8 @@ const getActorData = async function (input) {
 }
 
 const getMovieData = async function (input) {
-  const default_movie_url = URLs[0].concat(input)
-  const alternative_movie_url = URLs[1].concat(input)
+  const default_movie_url = ApiURLs.getMovieByNameStartingWith.concat(input)
+  const alternative_movie_url = ApiURLs.getMovieByNameContains.concat(input)
   try {
     var movie_default_response = await axios.get(default_movie_url)
     var resp = movie_default_response.data

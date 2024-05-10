@@ -6,6 +6,10 @@ import Logo from './header/Logo'
 import SignInButton from './header/SignInButton'
 import DropdownButton from './DropdownButton'
 import FilterButton from './header/FilterButton'
+import TitleScore from './entityData/TitleScore'
+import TitleHeader from './entityData/TitleHeader'
+import TitlePoster from './entityData/TitlePoster'
+import TitleVideo from './entityData/TitleVideo'
 
 export {
   MenuToggle,
@@ -16,4 +20,8 @@ export {
   SignInButton,
   DropdownButton,
   FilterButton,
+  TitleScore,
+  TitleHeader,
+  TitlePoster,
+  TitleVideo,
 }

@@ -1,0 +1,88 @@
+:root {
+  --rating-text-color: #b5b5b5;
+  --custom-font-family: Roboto, Helvetica, Arial, sans-serif;
+  --custom-hover-color: rgb(40, 40, 40);
+}
+
+.title__header--left {
+  font-size: 3rem;
+  line-height: 3.125rem;
+}
+
+.title__header--bottom {
+  font-family: var(--custom-font-family);
+  color: var(--rating-text-color);
+  font-weight: bold;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+.title__header--bottom a {
+  text-decoration: none;
+  color: var(--rating-text-color);
+}
+
+.title__header--bottom a:hover {
+  text-decoration: underline;
+}
+
+.title {
+  margin-right: 1rem;
+  text-align: center;
+}
+
+.imdb__rating__text {
+  font-size: 0.75rem;
+  color: var(--rating-text-color);
+  font-family: var(--custom-font-family);
+  letter-spacing: 0.1rem;
+  font-weight: bold;
+}
+
+.imdb__rating__icon {
+  background-color: transparent;
+  display: flex;
+  text-decoration: none;
+}
+
+.imdb__rating__icon :hover {
+  background-color: var(--custom-hover-color);
+}
+
+.imdb__rating__icon > span {
+  display: flex;
+  align-items: center;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  border-radius: 0.25rem;
+}
+
+.imdb__rating {
+  margin-left: 0.75rem;
+}
+
+.imdb__rating span {
+  display: flex;
+}
+
+.imdb__rating p {
+  margin: 0px;
+  line-height: 1.2rem;
+}
+
+.imdb__rating__score {
+  font-size: 1.2rem;
+  color: white;
+  font-weight: bold;
+}
+
+.imdb__rating__max {
+  font-family: var(--custom-font-family);
+  color: var(--rating-text-color);
+}
+
+.imdb__rating__number {
+  color: var(--rating-text-color);
+  text-align: left;
+  font-size: 0.75rem;
+}
