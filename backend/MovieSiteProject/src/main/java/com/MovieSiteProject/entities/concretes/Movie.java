@@ -2,19 +2,22 @@ package com.MovieSiteProject.entities.concretes;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 
 import java.io.Serializable;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "movie")
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Movie implements Serializable {
 
     @Id
@@ -35,6 +38,9 @@ public class Movie implements Serializable {
 
     @Column(name = "poster")
     private String moviePoster;
+
+    @Column(name = "trailer")
+    private String movieTrailer;
 
     @ManyToMany
     @JoinTable(name = "movie_actor",
@@ -61,28 +67,15 @@ public class Movie implements Serializable {
                 foreignKey = @ForeignKey(name = "fk_movie_mpa_rating"))
     private MpaRating mpaRating;
 
-    public Movie() {
-    }
-
     @Override
     public boolean equals(Object o) {
-        if(this == o) return true;
-        if(o==null || !(o instanceof Movie))
-            return false;
-        Movie movie = (Movie)o;
-
-        if(movieId == movie.getMovieId()) return true;
-        if(movieId == null) return false;
-
-        return movieId.equals(movie.getMovieId());
+        if (this == o) return true;
+        if (!(o instanceof Movie movie)) return false;
+        return Objects.equals(movieId, movie.movieId) && Objects.equals(movieName, movie.movieName) && Objects.equals(movieReleaseDate, movie.movieReleaseDate) && Objects.equals(movieRuntime, movie.movieRuntime) && Objects.equals(movieDescription, movie.movieDescription) && Objects.equals(moviePoster, movie.moviePoster) && Objects.equals(movieTrailer, movie.movieTrailer) && Objects.equals(actors, movie.actors) && Objects.equals(categories, movie.categories) && Objects.equals(mpaRating, movie.mpaRating);
     }
 
     @Override
     public int hashCode() {
-        if(movieId != null){
-            return movieId.hashCode();
-        } else{
-            return super.hashCode();
-        }
+        return Objects.hash(movieId, movieName, movieReleaseDate, movieRuntime, movieDescription, moviePoster, movieTrailer, actors, categories, mpaRating);
     }
 }

@@ -1,15 +1,15 @@
 package com.MovieSiteProject.entities.dtos;
 
 import com.MovieSiteProject.entities.concretes.Movie;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 import java.util.Objects;
 
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor
 @NoArgsConstructor
 public class CategoryDTO {
     private Integer categoryId;

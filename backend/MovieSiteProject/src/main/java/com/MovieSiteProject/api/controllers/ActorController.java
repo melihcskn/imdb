@@ -2,7 +2,6 @@ package com.MovieSiteProject.api.controllers;
 
 import com.MovieSiteProject.entities.dtos.ActorDTO;
 import com.MovieSiteProject.services.abstracts.ActorService;
-import com.MovieSiteProject.services.concretes.ActorManager;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,8 +12,8 @@ import java.util.List;
 public class ActorController {
     private final ActorService actorService;
 
-    public ActorController(ActorManager actorManager){
-        this.actorService = actorManager;
+    public ActorController(ActorService actorService){
+        this.actorService = actorService;
     }
 
     @GetMapping("/{id}")
@@ -28,7 +27,7 @@ public class ActorController {
     }
 
     @GetMapping("/getByNameStartingWith")
-    public List<ActorDTO> getByActorIdStartingWith(@RequestParam String searchParam){
+    public List<ActorDTO> getByActorNameStartingWith(@RequestParam String searchParam){
         return actorService.getByActorNameStartingWith(searchParam);
     }
 

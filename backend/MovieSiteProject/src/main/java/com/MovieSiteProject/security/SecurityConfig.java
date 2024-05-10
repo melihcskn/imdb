@@ -3,6 +3,7 @@ package com.MovieSiteProject.security;
 import com.MovieSiteProject.services.concretes.CustomUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -48,7 +49,6 @@ public class SecurityConfig {
                     request.requestMatchers("api/users/**").permitAll();
                     request.requestMatchers("api/movies/**").anonymous();
                     request.requestMatchers("api/actors/**").anonymous();
-                    request.requestMatchers("/api/mpaRatings/**").authenticated();
                 }).sessionManagement(session-> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)).addFilterBefore(jwtAuthorizationFilter, UsernamePasswordAuthenticationFilter.class).build();
 
     }

@@ -2,22 +2,24 @@ package com.MovieSiteProject.entities.concretes;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.io.Serializable;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 
 @Entity
 @Table(name = "actor")
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
 public class Actor implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "actor_id")
     private Integer actorId;
 
@@ -41,30 +43,15 @@ public class Actor implements Serializable {
     @JsonIgnore
     private List<Movie> movies = new ArrayList<>();
 
-    public Actor() {
-    }
-
     @Override
     public boolean equals(Object o) {
-        if(this == o) return true;
-        if(o==null || !(o instanceof Actor))
-            return false;
-        Actor actor = (Actor)o;
-
-        if(actorId == actor.getActorId()) return true;
-        if(actorId == null) return false;
-
-        return actorId.equals(actor.getActorId());
+        if (this == o) return true;
+        if (!(o instanceof Actor actor)) return false;
+        return Objects.equals(actorId, actor.actorId) && Objects.equals(actorName, actor.actorName) && Objects.equals(actorSurname, actor.actorSurname) && Objects.equals(actorBirthDay, actor.actorBirthDay) && Objects.equals(actorBio, actor.actorBio) && Objects.equals(actorPoster, actor.actorPoster) && Objects.equals(movies, actor.movies);
     }
 
     @Override
     public int hashCode() {
-        if(actorId != null){
-            return actorId.hashCode();
-        } else{
-            return super.hashCode();
-        }
+        return Objects.hash(actorId, actorName, actorSurname, actorBirthDay, actorBio, actorPoster, movies);
     }
-
-
 }

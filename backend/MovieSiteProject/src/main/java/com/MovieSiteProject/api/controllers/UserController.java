@@ -6,6 +6,7 @@ import com.MovieSiteProject.entities.model.LoginResponse;
 import com.MovieSiteProject.entities.model.RegisterRequest;
 import com.MovieSiteProject.security.JwtUtil;
 import com.MovieSiteProject.services.concretes.UserManager;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -60,8 +61,8 @@ public class UserController {
 
     @ResponseBody
     @PostMapping(path = "/register")
-    public ResponseEntity<Object> register(@RequestBody RegisterRequest registerRequest){
-        try {
+    public ResponseEntity<Object> register(@RequestBody @Valid RegisterRequest registerRequest){
+         try {
             registerRequest.setPassword(passwordEncoder.encode(registerRequest.getPassword()));
             userManager.registerUser(registerRequest);
 

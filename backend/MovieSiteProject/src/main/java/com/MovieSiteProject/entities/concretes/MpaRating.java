@@ -5,15 +5,18 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.List;
+import java.util.Objects;
 
 
 @Entity
 @Table(name = "movie_mpa_film_ratings")
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class MpaRating {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "MPA_rating_id")
     private Integer mpaRatingId;
 
@@ -30,5 +33,15 @@ public class MpaRating {
     @JsonIgnore
     private List<Movie> movies;
 
-    public MpaRating(){}
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof MpaRating mpaRating)) return false;
+        return Objects.equals(mpaRatingId, mpaRating.mpaRatingId) && Objects.equals(mpaDescription, mpaRating.mpaDescription) && Objects.equals(mpaAbbreviation, mpaRating.mpaAbbreviation) && Objects.equals(mpaRatingName, mpaRating.mpaRatingName) && Objects.equals(movies, mpaRating.movies);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(mpaRatingId, mpaDescription, mpaAbbreviation, mpaRatingName, movies);
+    }
 }

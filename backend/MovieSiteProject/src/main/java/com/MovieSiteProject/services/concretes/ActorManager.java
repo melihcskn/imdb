@@ -5,22 +5,19 @@ import com.MovieSiteProject.entities.concretes.Actor;
 import com.MovieSiteProject.entities.dtos.ActorDTO;
 import com.MovieSiteProject.entities.mapper.Mappers;
 import com.MovieSiteProject.services.abstracts.ActorService;
-import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-@NoArgsConstructor
 public class ActorManager implements ActorService {
-    private ActorRepository actorRepository;
-    Mappers mappers;
+    private final ActorRepository actorRepository;
+    Mappers mappers = new Mappers();;
 
     @Autowired
     public ActorManager(ActorRepository actorRepository){
         this.actorRepository = actorRepository;
-        mappers = new Mappers();
     }
 
     @Override

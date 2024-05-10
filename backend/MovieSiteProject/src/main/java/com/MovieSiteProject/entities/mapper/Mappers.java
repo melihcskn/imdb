@@ -15,15 +15,32 @@ import java.util.List;
 
 public class Mappers {
 
-    public MpaRatingDTO convertMpaRatingToDTO(MpaRating mpaRatingData){
+    public MpaRatingDTO convertMpaRatingToDTO(MpaRating mpaRating){
         MpaRatingDTO dto = new MpaRatingDTO();
 
-        dto.setMpaRatingId(mpaRatingData.getMpaRatingId());
-        dto.setMpaRatingName(mpaRatingData.getMpaRatingName());
-        dto.setMpaAbbreviation(mpaRatingData.getMpaAbbreviation());
-        dto.setMpaDescription(mpaRatingData.getMpaDescription());
-        dto.setMpaMovies(mpaRatingData.getMovies());
+        dto.setMpaRatingId(mpaRating.getMpaRatingId());
+        dto.setMpaRatingName(mpaRating.getMpaRatingName());
+        dto.setMpaAbbreviation(mpaRating.getMpaAbbreviation());
+        dto.setMpaDescription(mpaRating.getMpaDescription());
 
+        return dto;
+    }
+
+    public MpaRating convertMpaRatingDTOToMpaRating(MpaRatingDTO mpaRatingDTO){
+        MpaRating mpaRating = new MpaRating();
+
+        mpaRating.setMpaRatingId(mpaRatingDTO.getMpaRatingId());
+        mpaRating.setMpaRatingName(mpaRatingDTO.getMpaRatingName());
+        mpaRating.setMpaAbbreviation(mpaRatingDTO.getMpaAbbreviation());
+        mpaRating.setMpaRatingName(mpaRatingDTO.getMpaRatingName());
+
+        return mpaRating;
+    }
+
+    public List<MpaRatingDTO> convertMpaRatingToDTO(List<MpaRating> mpaRatingData){
+        List<MpaRatingDTO> dto = new ArrayList<>();
+
+        mpaRatingData.forEach(mpaRating -> dto.add(convertMpaRatingToDTO(mpaRating)));
         return dto;
     }
     public ActorDTO convertActorToDTO(Actor actor){
@@ -56,17 +73,24 @@ public class Mappers {
         dto.setMovieId(movie.getMovieId());
         dto.setMovieName(movie.getMovieName());
         dto.setMovieReleaseDate(movie.getMovieReleaseDate());
-        dto.setMovieMpaRating(movie.getMpaRating().getMpaAbbreviation());
+        dto.setMovieMpaRating(movie.getMpaRating() != null ? movie.getMpaRating().getMpaAbbreviation() : null);
+        dto.setMovieRuntime(movie.getMovieRuntime());
+        dto.setMovieTrailer(movie.getMovieTrailer());
         dto.setMovieCategories(movie.getCategories());
         dto.setMoviePoster(movie.getMoviePoster());
+        dto.setMovieDescription(movie.getMovieDescription());
 
-        movie.getActors().forEach(actor ->
-        {
-            String temp = actor.getActorName() + " " + actor.getActorSurname();
-            actors.add(temp);
-        });
+        if(movie.getActors() != null) {
+            movie.getActors().forEach(actor ->
+            {
+                String temp = actor.getActorName() + " " + actor.getActorSurname();
+                actors.add(temp);
+            });
 
-        dto.setMovieActors(actors);
+            dto.setMovieActors(actors);
+        }
+
+
 
         return dto;
     }
