@@ -62,7 +62,9 @@ export default function SearchBarListItem() {
                             {item.movieActors.slice(0, 2).map((x, index) => {
                               return (
                                 <React.Fragment key={index}>
-                                  {index == 0 ? x : `, ${x}`}
+                                  {index == 0
+                                    ? x.actorName
+                                    : `, ${x.actorName}`}
                                 </React.Fragment>
                               )
                             })}
