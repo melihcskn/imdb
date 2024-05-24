@@ -4,10 +4,7 @@ import com.MovieSiteProject.entities.concretes.Actor;
 import com.MovieSiteProject.entities.concretes.Category;
 import com.MovieSiteProject.entities.concretes.Movie;
 import com.MovieSiteProject.entities.concretes.MpaRating;
-import com.MovieSiteProject.entities.dtos.ActorDTO;
-import com.MovieSiteProject.entities.dtos.CategoryDTO;
-import com.MovieSiteProject.entities.dtos.MovieDTO;
-import com.MovieSiteProject.entities.dtos.MpaRatingDTO;
+import com.MovieSiteProject.entities.dtos.*;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -68,7 +65,7 @@ public class Mappers {
 
     public MovieDTO convertMovieToDTO(Movie movie){
         MovieDTO dto = new MovieDTO();
-        List<String> actors = new ArrayList<>();
+        List<MovieActorsDTO> actors = new ArrayList<>();
 
         dto.setMovieId(movie.getMovieId());
         dto.setMovieName(movie.getMovieName());
@@ -83,14 +80,14 @@ public class Mappers {
         if(movie.getActors() != null) {
             movie.getActors().forEach(actor ->
             {
-                String temp = actor.getActorName() + " " + actor.getActorSurname();
-                actors.add(temp);
+                String name = actor.getActorName() + " " + actor.getActorSurname();
+                Integer id = actor.getActorId();
+                String poster = actor.getActorPoster();
+                actors.add(MovieActorsDTO.builder().actorName(name).actorId(id).actorPoster(poster).build());
             });
 
             dto.setMovieActors(actors);
         }
-
-
 
         return dto;
     }

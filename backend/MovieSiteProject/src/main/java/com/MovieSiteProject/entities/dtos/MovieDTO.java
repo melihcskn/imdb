@@ -21,7 +21,7 @@ public class MovieDTO {
     private String moviePoster;
     private Integer movieRuntime;
     private String movieTrailer;
-    private List<String> movieActors;
+    private List<MovieActorsDTO> movieActors;
     private List<Category> movieCategories;
 
     @Override
