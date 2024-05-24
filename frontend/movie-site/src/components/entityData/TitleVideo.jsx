@@ -7,9 +7,9 @@ export default function TitleVideo(props) {
   return (
     <ReactPlayer
       controls={true}
-      height="inherit"
-      style={{ paddingLeft: '0.2rem', paddingRight: '0.2rem' }}
       url={trailerLink}
+      height={'inherit'}
+      width={'inherit'}
     />
   )
 }
