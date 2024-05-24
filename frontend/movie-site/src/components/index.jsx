@@ -10,6 +10,7 @@ import TitleScore from './entityData/TitleScore'
 import TitleHeader from './entityData/TitleHeader'
 import TitlePoster from './entityData/TitlePoster'
 import TitleVideo from './entityData/TitleVideo'
+import TitleGallery from './entityData/TitleGallery'
 
 export {
   MenuToggle,
@@ -24,4 +25,5 @@ export {
   TitleHeader,
   TitlePoster,
   TitleVideo,
+  TitleGallery,
 }

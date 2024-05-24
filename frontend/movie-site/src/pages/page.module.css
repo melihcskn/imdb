@@ -42,6 +42,43 @@
   margin-right: 0.5rem;
 }
 
+.title__gallery {
+  display: grid;
+  max-height: 25rem;
+  grid-template-columns: 20fr 65fr 15fr;
+  column-gap: 5px;
+}
+
+.title__details {
+  display: grid;
+  margin-top: 1rem;
+  grid-template-columns: 65fr 35fr;
+}
+
+.title__details__item {
+  padding: 1rem 0;
+  font-weight: 500;
+}
+
+.title__details__item__border {
+  border-bottom: 1px solid #4e5253;
+}
+
+.title__details__item > a {
+  text-decoration: none;
+  color: #4d84cb;
+  font-weight: 500;
+  margin-left: 1rem;
+}
+
+.title__genres {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 20%;
+  column-gap: 10px;
+  text-align: center;
+}
+
 .page__container {
   margin: 0 auto;
 }
